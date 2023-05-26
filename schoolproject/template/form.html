@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>form</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+var subjectObject = {
+  "Science": {
+    "Medical": ["", "", "", ""],
+    "Engineering": ["", "", "", ""],
+    "BSC": ["", "", "", ""]
+  },
+  "Commerce": {
+    "Bcom": ["", "", ""],
+    "BA": ["", "", ""],
+    "CA": ["", "", "", ""],
+    "BBA": ["", "", "", ""]
+  },
+   "Humanities": {
+    "BSC": ["", "", "", ""],
+    "BA": ["", "", "", ""],
+    "Phd": ["", "", "", ""]
+  },
+   "English literature": {
+    "BA": ["", "", "", ""],
+  },
+   "Arts": {
+    "BA": ["", "", "", ""],
+  }
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("subject");
+  var topicSel = document.getElementById("topic");
+  var chapterSel = document.getElementById("chapter");
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+<!--     chapterSel.length = 1;-->
+     topicSel.length = 1;
+    for (var y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+     chapterSel.length = 1;
+    var z = subjectObject[subjectSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+}
+function myFunction()
+{ alert("Order placed");
+  return href = "http://127.0.0.1:8000/";
+}
+
+
+</script>
+</head>
+<body  style="background-color: f2f2f2";>
+<h1>FORM</h1>
+<form action="form" method="POST" ">
+    {% csrf_token %}
+        <label>Username:</label><br>
+    <input style="border: 2px solid;  margin: 8px 0; width:15%;  height: 20%;" type="text" name="username" placeholder="enter your username"><br>
+        <label>Age :</label><br>
+
+    <input style="border: 2px solid;   margin: 8px 0; width:15%;height: 20%;" type="number" name="age" placeholder="enter your  age"><br>
+        <label>Date Of Birth:</label><br>
+    <input style="border: 2px solid;  margin: 8px 0;  width:15%;height: 20%;" type="date" name="DOB" placeholder="enter your date of birth"><br>
+         <label>Phone number:</label><br>
+    <input style="border: 2px solid;  margin: 8px 0;width:15%;height: 20%;" type="number" name="phone number" placeholder="enter your  phone number"><br>
+             <label>email id:</label><br>
+   <input style="border: 2px solid;  margin: 8px 0;width:15%;height: 20%;" type="email" name="email" placeholder="enter your mail id"><br>
+            <label>address:</label><br>
+
+    <input style="border: 2px solid;  margin: 8px 0;width:15%;height: 20%;" type="text" name="address" placeholder="enter your  address"><br>
+
+   <form name="form1" id="form1" action="/action_page.php">
+      <select name="subject" id="subject" style="border: 2px solid;  margin: 8px 0;width:15%;height: 20%;">
+       <option value="" selected="selected">Select Department</option>
+      </select><br>
+           <select name="topic" id="topic" style="border: 2px solid;  margin: 8px 0;width:15%;height: 20%;">
+       <option value="" selected="selected" >Select course</option>
+     </select>
+     <br>
+
+  </form>
+
+        <label>choose the puporse:</label><br>
+      <select name="puporse" id="puporse" style="border: 2px solid;  margin: 8px 0;width:15%;height: 20%;">
+         <option value="" selected="selected" >enquiry</option>
+         <option value="" selected="selected">place order</option>
+         <option value="" selected="selected">return</option>
+      </select><br>
+
+       <label>choose the material:</label><br>
+        <input type="checkbox" id="Note Book" name="fav_language" value="Note Book">
+      <label for="Note Book">Note Book</label><br>
+      <input type="checkbox" id="pen" name="fav_language" value="pen">
+      <label for="pen">pen</label><br>
+      <input type="checkbox" id="Exam papper" name="fav_language" value="Exam papper">
+      <label for="Exam papper">Exam papper</label><br>
+      <input type="checkbox" id="bags" name="fav_language" value="bags">
+      <label for="bags">bags</label><br>
+        <button onclick="myFunction()">submit</button>
+        </form><br><br>
+     <form action="logout">
+    <button type="submit">logout</button>
+    </form>
+</form>
+</body>
+</html>
